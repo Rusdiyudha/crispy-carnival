@@ -1,0 +1,32 @@
+working_dir: &working_dir ~/app
+
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+      - build
+      - project
+
+jobs:
+  build:
+    parallelism: 15
+    machine:
+      image: ubuntu-2204:2024.05.1
+    resource_class: large
+    steps:
+      - checkout
+      - run:
+         name: "Bangun"
+         command: lscpu
+
+  project:
+    parallelism: 15
+    machine:
+      image: ubuntu-2204:2024.05.1
+    resource_class: large
+    steps:
+      - checkout
+      - run:
+         name: "Bangun"
+         command: lscpu
